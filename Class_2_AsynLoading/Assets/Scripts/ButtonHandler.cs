@@ -9,4 +9,10 @@ public class ButtonHandler : MonoBehaviour
         Debug.Log("Navigating to the game scene...");
         Loader.Load(Loader.Scene.GameScene);
     }
+
+    public void NavigateToMainMenu()
+    {
+        Debug.Log("Navigating to main menu");
+        Loader.Load(Loader.Scene.MainMenu);
+    }
 }
