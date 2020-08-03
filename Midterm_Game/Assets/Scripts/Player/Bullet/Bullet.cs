@@ -30,9 +30,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         int damage = (int)Random.Range(damageMin, damageMax);
-        if (other.gameObject.layer.Equals(9))
+        if (other.gameObject.tag == "Destroyable")
         {
-            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }
