@@ -780,6 +780,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+  shootingEffect: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980,
+    type: 3}
 --- !u!1 &941546624
 GameObject:
   m_ObjectHideFlags: 0

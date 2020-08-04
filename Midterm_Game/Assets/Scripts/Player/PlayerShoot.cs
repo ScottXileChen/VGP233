@@ -1,20 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
     //public PlayerWeapon playerWeapon;
 
     [SerializeField]
-    public GameObject bulletPrefab = null;
+    private GameObject bulletPrefab = null;
 
     [SerializeField]
-    public GameObject gun = null;
+    private GameObject gun = null;
 
     [SerializeField]
     private Camera cam = null;
 
     [SerializeField]
     private LayerMask mask;
+
+    [SerializeField]
+    private GameObject shootingEffect = null;
 
     private void Start()
     {
@@ -39,9 +44,11 @@ public class PlayerShoot : MonoBehaviour
         //{
         //    Debug.Log("We hit " + hit.collider.name);
         //}
+        // Shooting effect
+        Instantiate(shootingEffect, gun.transform.position, gun.transform.rotation);
+
         GameObject bulletObject = Instantiate(bulletPrefab);
         bulletObject.transform.position = gun.transform.position + cam.transform.forward;
         bulletObject.transform.forward = cam.transform.forward;
     }
-
 }
