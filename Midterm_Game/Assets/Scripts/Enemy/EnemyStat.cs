@@ -10,7 +10,10 @@ public class EnemyStat : MonoBehaviour
     private void Update()
     {
         if (Health <= 0)
+        {
+            ScoreManager.instance.AddScore(1);
             Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage)
