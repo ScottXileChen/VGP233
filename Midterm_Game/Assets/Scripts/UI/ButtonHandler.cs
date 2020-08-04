@@ -24,4 +24,12 @@ public class ButtonHandler : MonoBehaviour
         Setting.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void QuitGame()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+    }
 }

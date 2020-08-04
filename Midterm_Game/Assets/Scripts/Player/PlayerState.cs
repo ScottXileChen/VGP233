@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class PlayerState : MonoBehaviour
             healTimer = healTime;
         }
 
-       // if (Health <= 0)
-            //Destroy(gameObject);
-
+        if (Health <= 0)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            SceneManager.LoadScene("LoseUI");
+        }
     }
 
     public void TakeDamage(int damage)
