@@ -45,10 +45,15 @@ public class PlayerShoot : MonoBehaviour
         //    Debug.Log("We hit " + hit.collider.name);
         //}
         // Shooting effect
-        Instantiate(shootingEffect, gun.transform.position, gun.transform.rotation);
+        GameObject ShootEffect = Instantiate(shootingEffect, gun.transform.position, gun.transform.rotation);
+        ParticleSystem parts = shootingEffect.GetComponent<ParticleSystem>();
+        float totalDuration = parts.main.duration + parts.main.startLifetimeMultiplier;
+        Destroy(ShootEffect, totalDuration);
 
         GameObject bulletObject = Instantiate(bulletPrefab);
         bulletObject.transform.position = gun.transform.position + cam.transform.forward;
         bulletObject.transform.forward = cam.transform.forward;
+
+
     }
 }

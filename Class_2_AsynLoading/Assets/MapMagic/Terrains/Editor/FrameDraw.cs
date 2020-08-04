@@ -179,6 +179,7 @@ namespace MapMagic.Core.GUI
 		private static Vector3[] CreateLinePoints (Terrain terrain)
 		{
 			TerrainData data = terrain.terrainData;
+
 			int heightmapResolution = data.heightmapResolution;
 			int resolution = heightmapResolution; //Mathf.Min(heightmapResolution, 128);
 
