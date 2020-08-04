@@ -21,6 +21,12 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject shootingEffect = null;
 
+    private int bulletsNum = 30;
+    public int bullets;
+    private float reloadTime = 3;
+    public float reloadTimer = 0;
+    public bool isReload = false;
+
     private void Start()
     {
         if(cam == null)
@@ -28,13 +34,26 @@ public class PlayerShoot : MonoBehaviour
             Debug.LogError("PlayerShoot: No camera referenced!");
             this.enabled = false;
         }
+        bullets = bulletsNum;
+        reloadTimer = reloadTime;
     }
 
     private void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && bullets > 0 && !isReload)
         {
             Shoot();
+            bullets--;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            isReload = true;
+        }
+
+        if (isReload)
+        {
+            Reload();
         }
     }
     void Shoot()
@@ -53,7 +72,17 @@ public class PlayerShoot : MonoBehaviour
         GameObject bulletObject = Instantiate(bulletPrefab);
         bulletObject.transform.position = gun.transform.position + cam.transform.forward;
         bulletObject.transform.forward = cam.transform.forward;
-
-
     }
+
+    void Reload()
+    {
+        reloadTimer -= Time.deltaTime;
+        if (reloadTimer <= 0)
+        {
+            bullets = bulletsNum;
+            reloadTimer = reloadTime;
+            isReload = false;
+        }
+    }
+
 }
