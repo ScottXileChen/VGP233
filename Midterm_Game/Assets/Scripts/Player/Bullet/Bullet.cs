@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.GetComponent<EnemyStat>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
